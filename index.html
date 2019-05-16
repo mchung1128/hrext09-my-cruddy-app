@@ -10,9 +10,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 </head>
 <body>
+  <h1>GOALs</h1>
+  <h5>Get Out And Live</h5>
   <form>
-    <input id="keyInput" type="text" placeholder="key"></input>
-    <input id="valueInput" type="text" placeholder="value"></input>
+    <label for="name">Name</label>
+    <input id="nameInput" type="text"></input>
+
+    <label for="Category">Category</label>
+    <select id="category-dropdown">
+      <option value="1">Places I want to go</option>
+      <option value="2">Things I want to eat/drink</option>
+      <option value="3">Milestones</option>
+      <option value="4">Skills I want to learn</option>
+      <option value="5">Things I want to do</option>
+      <option value="6">Books I want to read</option>
+      <option value="7">TV Shows/Movies I want to watch</option>
+    </select>
+
+    <input id="valueInput" type="text"></input>
     <button id="createButton" type='submit'>Create</button>
     <button id="updateButton" type='submit'>Update</button>
   </form>

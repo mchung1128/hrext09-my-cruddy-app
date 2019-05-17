@@ -80,27 +80,44 @@ $(document).ready(function() {
   $('#addButton').click(function(event) {
     event.preventDefault();
 
-    var profileName = $("#nameInput").val();
-    var category = $("#categoryDropdown").val();
-    var input = $("#valueInput").val();
+    var profileName = $(`#nameInput`).val();
+    var category = $(`#categoryDropdown`).val();
+    var input = $(`#valueInput`).val();
+    var $individualList = $(`<div class='individual-list'></div>`);
+    var $name = $(`<div class='name'>${profileName}</div>`);
+    var $category = $(`<div class='category'>${category}</div>`);
+    var $inputContainer = $(`<div class='input-container'></div>`);
+    var $input = $(`<ul id='${profileName}' class='list'><li>${input}</li><ul>`);
     if (keyExists(profileName)) { // if person already has a bucket list
       // console.log(profileName, category, input);
       addToList(profileName, category, input);
+      $(`ul#${profileName}`).append(`<li>${input}</li>`);
+      //if the key exists, go to $individualList => $category => $input and add input to this div
     } else {
       createItem(profileName, createList(category, input));
+      $input.appendTo($inputContainer);
+      $individualList.append($name, $category, $inputContainer);
+      $individualList.appendTo($(".list-container"));
       // createItem(profileName, input);
     }
+
+    // console.log(JSON.parse(getItem(profileName)));
+    // $("<div class='list'><div>").appendTo($(".list-container"));
   });
 
-  $('#updateButton').click(function(event) {
-    event.preventDefault();
+// have a div that contains all the lists
+  // div with name categories
+    // unordered list with items
 
-    var profileName = $("#nameInput").val();
-    var currentValue = $("#categoryDropdown").val();
-    if (keyExists(profileName)) {
-      updateItem(profileName, currentValue);
-    } else {
-      //current key doesnt exist, do stuff
-    }
-  });
+  // $('#updateButton').click(function(event) {
+  //   event.preventDefault();
+
+  //   var profileName = $("#nameInput").val();
+  //   var currentValue = $("#categoryDropdown").val();
+  //   if (keyExists(profileName)) {
+  //     updateItem(profileName, currentValue);
+  //   } else {
+  //     //current key doesnt exist, do stuff
+  //   }
+  // });
 });

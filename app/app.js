@@ -47,22 +47,25 @@ var keyExists = function(key) {
 
 function parseList(name) { // parses the bucket list into an object
   var item = getItem(name);
-  JSON.parse(item);
-  return item;
+  return JSON.parse(item);
 }
+
 function createList(category, input) {
   var obj = {}; // creates bucket list object
   obj[category] = [input]; // adds category and whatever value was typed in
   return JSON.stringify(obj);
 }
-function addToList(name, category, input) {
-  var list = parseList(name); // parses into an object
-  if (list[category]) {
-    list[category].push(input); // accesses the category and pushes
+
+function addToList(name, category, input) { // add items to bucket list
+  var list = parseList(name); // parses list into an object
+  if (list.hasOwnProperty(category)) { // if the list has the category
+    // console.log(list[category], input);
+    list[category].push(input); // pushes input into the category array
+    // console.log('\n', list[category], input);
   } else {
-    list[category] = [input];
+    list[category] = [input]; // adds category to bucket list and sets value to array with input
   }
-  return JSON.stringify(item);
+  return updateItem(name, JSON.stringify(list));
 }
 
 
@@ -81,6 +84,7 @@ $(document).ready(function() {
     var category = $("#categoryDropdown").val();
     var input = $("#valueInput").val();
     if (keyExists(profileName)) { // if person already has a bucket list
+      // console.log(profileName, category, input);
       addToList(profileName, category, input);
     } else {
       createItem(profileName, createList(category, input));

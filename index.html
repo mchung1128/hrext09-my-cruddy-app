@@ -8,27 +8,30 @@
           integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+<!--   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-  <h1>GOALs</h1>
-  <h5>Get Out And Live</h5>
+  <h1>GOAL List</h1>
+  <h5>Get Out And Live List</h5>
   <form>
     <label for="name">Name</label>
     <input id="nameInput" type="text"></input>
 
     <label for="Category">Category</label>
-    <select id="category-dropdown">
-      <option value="1">Places I want to go</option>
-      <option value="2">Things I want to eat/drink</option>
-      <option value="3">Milestones</option>
-      <option value="4">Skills I want to learn</option>
-      <option value="5">Things I want to do</option>
-      <option value="6">Books I want to read</option>
-      <option value="7">TV Shows/Movies I want to watch</option>
+    <select id="categoryDropdown">
+      <option value="Places I want to go">Places I want to go</option>
+      <option value="Things I want to eat/drink">Things I want to eat/drink</option>
+      <option value="Milestones">Milestones</option>
+      <option value="Skills I want to learn">Skills I want to learn</option>
+      <option value="Things I want to do">Things I want to do</option>
+      <option value="Books I want to read">Books I want to read</option>
+      <option value="TV Shows/Movies I want to watch">TV Shows/Movies I want to watch</option>
     </select>
 
     <input id="valueInput" type="text"></input>
-    <button id="createButton" type='submit'>Create</button>
+    <button id="addButton" type='submit'>Create</button>
     <button id="updateButton" type='submit'>Update</button>
   </form>
   <script src='app/app.js'></script>

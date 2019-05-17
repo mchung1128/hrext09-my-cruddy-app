@@ -44,26 +44,57 @@ var keyExists = function(key) {
 ///////////////////////////////////////////
 //event handlers for the buttons and ... possibly the inputboxes
   //preventdefault on button clicks
+
+function parseList(name) { // parses the bucket list into an object
+  var item = getItem(name);
+  JSON.parse(item);
+  return item;
+}
+function createList(category, input) {
+  var obj = {}; // creates bucket list object
+  obj[category] = [input]; // adds category and whatever value was typed in
+  return JSON.stringify(obj);
+}
+function addToList(name, category, input) {
+  var list = parseList(name); // parses into an object
+  if (list[category]) {
+    list[category].push(input); // accesses the category and pushes
+  } else {
+    list[category] = [input];
+  }
+  return JSON.stringify(item);
+}
+
+
+/* HELPER FUNCTION
+  1. Parse the bucket list object
+  2. Creating the initial bucket list object
+  3. Add to input to category
+  4. 
+*/
+
 $(document).ready(function() {
-  $('#createButton').click(function(event) {
+  $('#addButton').click(function(event) {
     event.preventDefault();
 
-    var currentKey = $("#keyInput").val();
-    var currentValue = $("#valueInput").val();
-    if (keyExists(currentKey)) {
-      //current key exists, do something error-handle-y
+    var profileName = $("#nameInput").val();
+    var category = $("#categoryDropdown").val();
+    var input = $("#valueInput").val();
+    if (keyExists(profileName)) { // if person already has a bucket list
+      addToList(profileName, category, input);
     } else {
-      createItem(currentKey, currentValue);
+      createItem(profileName, createList(category, input));
+      // createItem(profileName, input);
     }
   });
 
   $('#updateButton').click(function(event) {
     event.preventDefault();
 
-    var currentKey = $("#keyInput").val();
-    var currentValue = $("#valueInput").val();
-    if (keyExists(currentKey)) {
-      updateItem(currentKey, currentValue);
+    var profileName = $("#nameInput").val();
+    var currentValue = $("#categoryDropdown").val();
+    if (keyExists(profileName)) {
+      updateItem(profileName, currentValue);
     } else {
       //current key doesnt exist, do stuff
     }

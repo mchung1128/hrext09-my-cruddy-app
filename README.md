@@ -73,4 +73,6 @@ Value
 {Places I : [], Things: [], }            
 
 
+If the item is already on the list, gives a pop up saying it's already on the list.
 
+Make each item click-able so once it's completed, you can click on it and it gets removed from the list, but gets added to a "Completed" section

@@ -90,8 +90,17 @@ $(document).ready(function() {
     var $input = $(`<ul id='${profileName}' class='list'><li>${input}</li><ul>`);
     if (keyExists(profileName)) { // if person already has a bucket list
       // console.log(profileName, category, input);
-      addToList(profileName, category, input);
-      $(`ul#${profileName}`).append(`<li>${input}</li>`);
+      var obj = JSON.parse(getItem(profileName)) // => bucket list object
+      // console.log(obj);
+      // console.log(obj[category]);
+      if (obj[category].includes(input)) {
+        window.alert("This is already on your list!");
+      } else {
+        addToList(profileName, category, input);
+        $(`ul#${profileName}`).append(`<li>${input}</li>`);
+      }
+      // obj.category.includes(input)
+
       //if the key exists, go to $individualList => $category => $input and add input to this div
     } else {
       createItem(profileName, createList(category, input));

@@ -1,4 +1,60 @@
-/*
-  input boxes
-  buttons
-*/
+h1 {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	background-color: #f6f5f5;
+	font-family: 'Arial Black';
+}
+
+h5 {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	background-color: #f6f5f5;
+}
+
+.list-container {
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+	/*margin-left: 20px;*/
+	/*background-color: #048998;*/
+	/*height: 500px;*/
+	overflow: auto;
+}
+
+form {
+	margin: auto;
+	background-color: #e9e4e6;
+}
+
+body {
+	background-color: #3bb4c1;
+}
+
+/*input[type=checkbox]:checked + li {
+	text-decoration: line-through;
+}*/
+input {
+	margin-right: 10px;
+}
+
+.individual-list {
+	background-color: #048998;
+	width: 50%;
+	/*border-radius: 2%;*/
+	margin-top: 2%;
+	height: inherit;
+	overflow: auto;
+	margin-left: 1%;
+}
+
+.name {
+	font-size: 2em;
+	margin-left: 10px;
+}
+
+.category {
+	font-size: 1em;
+	margin-left: 10px;
+}

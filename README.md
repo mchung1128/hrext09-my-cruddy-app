@@ -78,4 +78,13 @@ Value
 	- add category to profile along with input
 3. profile does exist and category exists
 	- check does the category include the input
-	
+
+list container div
+	personal div
+		name div
+		category div
+			item container
+				items ul => unordered list
+		category
+			items
+	personal div

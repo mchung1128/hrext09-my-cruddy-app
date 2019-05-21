@@ -84,17 +84,19 @@ function categoryExists(name, categoryName) {
 */
 
 $(document).ready(function() {
+
   $('#addButton').click(function(event) {
     event.preventDefault();
 
     var profileName = $(`#nameInput`).val();
     var category = $(`#categoryDropdown`).val();
     var input = $(`#valueInput`).val();
-    var $individualList = $(`<div id='${profileName}List' class='individual-list'></div>`);
+    var $individualList = $(`<div id='${profileName}List' class='individual-list w3-round-xlarge'></div>`);
     var $name = $(`<div class='name'>${profileName}</div>`);
     var $category = $(`<div id='${category}' class='category'>${category}</div>`);
     var $inputContainer = $(`<div class='input-container'></div>`);
-    var $input = $(`<ul id='${profileName}${category}' class='list'><li>${input}</li><ul>`);
+    var $input = $(`<ul id='${profileName}${category}' class='list'><li><label><input type='checkbox'>${input}</label></li></ul>`);
+    var $newItem = $(`<li><label><input type='checkbox'>${input}</label></li>`);
 // 1. no profile exists
 //   - create profile and add category that's selected with input
 // 2. profile does exist, but category does not
@@ -112,7 +114,7 @@ $(document).ready(function() {
         // var ulID = $(`ul#${profileName}`).html();
         // JSON.stringify(ulID);
         //HOW DO I ACCESS THE PROFILE'S CATEGORY'S DIV
-        $(`ul[id='${profileName}${category}']`).append(`<li>${input}</li>`);
+        $(`ul[id='${profileName}${category}']`).append($newItem);
         console.log('here')
 
       }
@@ -135,7 +137,7 @@ $(document).ready(function() {
 // need to access existing individual list div to add the $category and $inputContainer
       $input.appendTo($inputContainer);
       $inputContainer.appendTo($category);
-      $(`#${profileName}List`).append($category);
+      $category.appendTo(`#${profileName}List`);
       $(`#${profileName}List`).appendTo($(".list-container"));
       // console.log('here')
       // createItem(profileName, input);
@@ -145,12 +147,13 @@ $(document).ready(function() {
       $inputContainer.appendTo($category);
       $individualList.append($name, $category);
       $individualList.appendTo($(".list-container"));
-      console.log('here')
+      // console.log('here')
     }
 
     // console.log(JSON.parse(getItem(profileName)));
     // $("<div class='list'><div>").appendTo($(".list-container"));
   });
+
 
 // have a div that contains all the lists
   // div with name categories

@@ -72,7 +72,10 @@ Mike
 Value
 {Places I : [], Things: [], }            
 
-
-If the item is already on the list, gives a pop up saying it's already on the list.
-
-Make each item click-able so once it's completed, you can click on it and it gets removed from the list, but gets added to a "Completed" section
+1. no profile exists
+	- create profile and add category that's selected with input
+2. profile does exist, but category does not
+	- add category to profile along with input
+3. profile does exist and category exists
+	- check does the category include the input
+	

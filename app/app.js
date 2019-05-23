@@ -9,9 +9,13 @@
 
 //localStorage interaction function
 //get item
-var getItem = function(key) {
+var getItem = function(key) { //returns the value WHICH IS A STRING
+  //i: string
+  //o: string '[hi]'
   return window.localStorage.getItem(key);
 }
+
+
 
 //create
 var createItem = function(key, value) {
@@ -109,10 +113,9 @@ $(document).ready(function() {
       if (obj[category].includes(input)) {
         window.alert("This is already on your list!");
         console.log('here')
+
       } else {
         addToList(profileName, category, input);
-        // var ulID = $(`ul#${profileName}`).html();
-        // JSON.stringify(ulID);
         //HOW DO I ACCESS THE PROFILE'S CATEGORY'S DIV
         $(`ul[id='${profileName}${category}']`).append($newItem);
         console.log('here')
@@ -120,20 +123,7 @@ $(document).ready(function() {
       }
       //if the key exists, go to $individualList => $category => $input and add input to this div
     } else if (keyExists(profileName) && !categoryExists(profileName, category)){
-      // add category to the key
-      // console.log('here')
-      // var list = JSON.parse(getItem(profileName));
-      // console.log(typeof list);
-      // list['test'];
-      // console.log(list)
-      // list[category].push(input);
-      // addCategory(profileName, category, input);
-      // console.log(getItem(profileName));
-      // var obj = JSON.parse(getItem(profileName));
-      // obj[category] = [input];
-      // console.log(obj);
       updateItem(profileName, JSON.stringify(addCategory(profileName, category, input)));
-      // addToList(profileName, category, input);
 // need to access existing individual list div to add the $category and $inputContainer
       $input.appendTo($inputContainer);
       $inputContainer.appendTo($category);
@@ -149,69 +139,9 @@ $(document).ready(function() {
       $individualList.appendTo($(".list-container"));
       // console.log('here')
     }
-
-    // console.log(JSON.parse(getItem(profileName)));
-    // $("<div class='list'><div>").appendTo($(".list-container"));
+  $(`#valueInput`).val('');
   });
-
-
-// have a div that contains all the lists
-  // div with name categories
-    // unordered list with items
-
-  // $('#updateButton').click(function(event) {
-  //   event.preventDefault();
-
-  //   var profileName = $("#nameInput").val();
-  //   var currentValue = $("#categoryDropdown").val();
-  //   if (keyExists(profileName)) {
-  //     updateItem(profileName, currentValue);
-  //   } else {
-  //     //current key doesnt exist, do stuff
-  //   }
-  // });
 });
-
-
-
-// $(document).ready(function() {
-//   $('#addButton').click(function(event) {
-//     event.preventDefault();
-
-//     var profileName = $(`#nameInput`).val();
-//     var category = $(`#categoryDropdown`).val();
-//     var input = $(`#valueInput`).val();
-//     var $personalList = $(`<div id='${profileName}List' class='personal-list'></div>`);
-//     var $nameDiv = $(`<div id='${profileName}' class='name'>${profileName}</div>`);
-//     var $categoryDiv = $(`<div id='${category}Div' class='category'>${category}</div>`);
-//     var $itemContainer = $(`<div id='${profileName}${category}container' class='item-container'</div>`);
-
-//     if (!keyExists(profileName)) {
-//       createItem(profileName, createList(category, input));
-//       $(`<li>${input}</li>`).appendTo($(`<ul id='${profileName}${category}Items'><ul>`));
-//       $(`#${profileName}${category}`).appendTo($itemContainer);
-//       $itemContainer.appendTo($categoryDiv);
-//       $personalList.append($nameDiv, $categoryDiv);
-//     } else if (keyExists(profileName) && !categoryExists(profileName, category)) {
-//       updateItem(profileName, JSON.stringify(addCategory(profileName, category, input)));
-//       $(`<li>${input}</li>`).appendTo($(`<ul id='${profileName}${category}Items'><ul>`));
-//       $(`<ul id='${profileName}${category}Items'><ul>`).appendTo($itemContainer);
-//       $itemContainer.appendTo($categoryDiv);
-//       $categoryDiv.appendTo($personalList);
-//     } else if (keyExists(profileName) && categoryExists(profileName, category)) {
-//       var obj = JSON.parse(getItem(profileName))
-//       if (obj[category].includes(input)) {
-//         window.alert("This is already on your list!");
-//       } else {
-//         addToList(profileName, category, input);
-//         $(`<li>${input}</li>`).appendTo($(`<ul id='${profileName}${category}Items'><ul>`));
-//         $(`#${profileName}${category}`).appendTo($itemContainer);
-//         $itemContainer.appendTo($categoryDiv);
-//         $personalList.append($nameDiv, $categoryDiv);
-//       }
-//     }
-//   })
-// })
 
 /*
 Name input field => $(`#nameInput`).val(); AKA key
